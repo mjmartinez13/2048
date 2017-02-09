@@ -58,6 +58,10 @@ Game2048.prototype._getAviablePosition = function () {
     });
   };
 
+  // ============================================
+  // MOVE LEFT
+  // ============================================
+
   Game2048.prototype.moveLeft = function () {
     var updatedBoard = [];
 
@@ -99,7 +103,9 @@ Game2048.prototype._getAviablePosition = function () {
 
       this.board = updatedBoard;
   };
-
+  // ============================================
+  // MOVE RIGHT
+  // ============================================
   Game2048.prototype.moveRight = function () {
     var updatedBoard = [];
 
@@ -140,4 +146,38 @@ Game2048.prototype._getAviablePosition = function () {
     });
 
       this.board = updatedBoard;
+  };
+
+
+  // ============================================
+  // TRANSPOSE
+  // ============================================
+
+  Game2048.prototype._transposeMatrix = function () {
+      for (var row = 0; row < this.board.length; row++) {
+          for (var column = row+1; column < this.board.length; column++) {
+              var temp = this.board[row][column];
+              this.board[row][column] = this.board[column][row];
+              this.board[column][row] = temp;
+            }
+          }
+      };
+
+  // ============================================
+  // MOVE UP
+  // ============================================
+
+
+  Game2048.prototype.moveUp = function () {
+    this._transposeMatrix();
+    this.moveLeft();
+    this._transposeMatrix();
+  };
+  // ============================================
+  // MOVE DOWN
+  // ============================================
+  Game2048.prototype.moveDown = function () {
+    this._transposeMatrix();
+    this.moveRight();
+    this._transposeMatrix();
   };
