@@ -57,6 +57,7 @@ Game2048.prototype._getAviablePosition = function () {
     this.board.forEach(function (row) {
       console.log(row);
     });
+    console.log('Current Score:' + this.score);
   };
 
   // ============================================
@@ -226,7 +227,7 @@ Game2048.prototype._getAviablePosition = function () {
     }
   };
 
-  Game2048.prototype._updateScore = function () {
+  Game2048.prototype._updateScore = function (points) {
     this.score += points;
 
     if (points === 2048){
