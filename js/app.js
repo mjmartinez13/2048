@@ -6,8 +6,10 @@ $(document).ready(function () {
 
  renderTiles(); // 2. Take the initial info in that object (tiles) and put them on the screen define to make use of the myGlobalGame function
 
- $(document).keydown(function (ev) {
+ loadSounds();
 
+ $(document).keydown(function (ev) {
+   ion.sound.play('snap');
  // prevent arrow key scrolling
  var acceptableKeys = [37, 65, 38, 87, 39, 68, 40, 83 ];
  if (!acceptableKeys.includes(ev.keyCode)) {
@@ -44,6 +46,10 @@ $(document).ready(function () {
  // Since there isn't a magical connection between the object and the screen we create that with code
  // we'll loop through every single cell in the board to do this
 
+   function updateScore(){
+ $('#js-score').html(myGame.score);
+  }
+
  function renderTiles () {
    $("#tile-container").empty(); // clears out existing tiles in the DOM
 
@@ -58,7 +64,6 @@ $(document).ready(function () {
      // console.log("Column: " + colIndex);
      var tileHtml = '<div class="tile tile-position-' + rowIndex + '-' + colIndex + ' val-' + cell + '">' + cell +'</div>';
       $("#tile-container").append(tileHtml);
-
      });
    });
  }
@@ -73,10 +78,11 @@ $(document).ready(function () {
    }
  }
 
-// 3. Handle keyboard events
-
-
-
-// 5. Updating the screen based on the new board state
-
-// 6. Win or Lose?
+ function loadSounds () {
+   ion.sound ({
+     sounds: [{name: 'snap'}, {name: 'tap'}, {name: 'beer_can_opening'}],
+     path: 'lib/ion-sound/sounds/',
+     preload: true,
+     volume: 1.0
+   });
+ }
