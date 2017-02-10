@@ -1,20 +1,29 @@
 body {
-  color: #3c5566;
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 18px;
+  text-shadow: 3px 3px #000;
+  color: #ecf0f1;
   margin: 0;
   padding: 0;
+  background: url('https://wallpaperscraft.com/image/material_ornament_pattern_background_texture_55237_3840x2400.jpg')center no-repeat;
+  background-size: cover;
 }
 
 #score {
-  font-size: 35px;
+  font-size: 55px;
   text-align: center;
-  padding: 50px;
+  padding: 10px;
+  display: block;
+  width: 20%;
+  margin: 0 auto;
+  margin-top: 20px;
 }
-
+p {
+  margin: 0;
+}
 #game-board {
-  background: #3582b8;
-  border-radius: 4px;
+  background: #1d5a81;
+  border-radius: 5px;
   padding: 10px;
   width: 600px;
   margin: 0 auto;
